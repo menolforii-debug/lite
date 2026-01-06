@@ -20,7 +20,7 @@ $user = Auth::user();
     <title>LiteCMS Admin</title>
     <link rel="stylesheet" href="<?= Config::baseUrl('/vendor/sow/sow.vendor.min.css') ?>">
     <link rel="stylesheet" href="<?= Config::baseUrl('/vendor/sow/sow.core.min.css') ?>">
-    <link rel="stylesheet" href="<?= Config::baseUrl('/vendor/codemirror/codemirror.css') ?>">
+    <link rel="stylesheet" href="<?= Config::baseUrl('/admin/vendor/codemirror/codemirror.css') ?>">
 </head>
 <body>
 <div class="container-fluid py-3" id="app" data-base-url="<?= htmlspecialchars($baseUrl) ?>" data-csrf="<?= htmlspecialchars($csrf) ?>">
@@ -130,8 +130,8 @@ $user = Auth::user();
 
 <script src="<?= Config::baseUrl('/vendor/sow/sow.vendor.min.js') ?>"></script>
 <script src="<?= Config::baseUrl('/vendor/sow/sow.core.min.js') ?>"></script>
-<script src="<?= Config::baseUrl('/vendor/codemirror/codemirror.js') ?>"></script>
-<script src="<?= Config::baseUrl('/vendor/tinymce/tinymce.min.js') ?>"></script>
+<script src="<?= Config::baseUrl('/admin/vendor/codemirror/codemirror.js') ?>"></script>
+<script src="<?= Config::baseUrl('/admin/vendor/tinymce/tinymce.min.js') ?>"></script>
 <script src="<?= Config::baseUrl('/admin/assets/helpers.js') ?>"></script>
 <script src="<?= Config::baseUrl('/admin/assets/api.js') ?>"></script>
 <script src="<?= Config::baseUrl('/admin/assets/app-ui.js') ?>"></script>
