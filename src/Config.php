@@ -14,12 +14,9 @@ final class Config
     {
         if (self::BASE_URL === '') {
             $base = dirname($_SERVER['SCRIPT_NAME'] ?? '');
-<<<<<<< HEAD
-=======
             if (str_ends_with($base, '/admin')) {
                 $base = substr($base, 0, -6);
             }
->>>>>>> origin/codex/implement-litecms-based-on-requirements-3evle6
             $_SERVER['BASE_URL'] = $base === '/' ? '' : $base;
             return;
         }

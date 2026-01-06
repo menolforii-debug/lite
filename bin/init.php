@@ -5,6 +5,20 @@ declare(strict_types=1);
 require_once __DIR__ . '/../bootstrap.php';
 
 use LiteCMS\DB;
+use LiteCMS\Config;
+
+$dbPath = Config::DB_PATH;
+$dbDir = dirname($dbPath);
+if (!is_dir($dbDir)) {
+    if (!mkdir($dbDir, 0775, true) && !is_dir($dbDir)) {
+        echo "Не удалось создать каталог базы данных: {$dbDir}\n";
+        exit(1);
+    }
+}
+if (!is_writable($dbDir)) {
+    echo "Каталог базы данных недоступен для записи: {$dbDir}\n";
+    exit(1);
+}
 
 $pdo = DB::pdo();
 
@@ -152,4 +166,4 @@ if ($users === []) {
     ]);
 }
 
-echo "Init complete\n";
+echo "Init complete. DB: {$dbPath}\n";
