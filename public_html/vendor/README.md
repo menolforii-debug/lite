@@ -4,10 +4,10 @@
 которые используются и в админке, и в публичной части.
 
 Ожидаемые пути:
-- /vendor/sow/sow.vendor.min.css
-- /vendor/sow/sow.core.min.css
-- /vendor/sow/sow.vendor.min.js
-- /vendor/sow/sow.core.min.js
+- /vendor/sow/css/sow.vendor.min.css
+- /vendor/sow/css/sow.core.min.css
+- /vendor/sow/js/sow.vendor.min.js
+- /vendor/sow/js/sow.core.min.js
 CodeMirror и TinyMCE используются только в админке:
 - /admin/vendor/codemirror/codemirror.css
 - /admin/vendor/codemirror/codemirror.js
