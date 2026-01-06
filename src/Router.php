@@ -29,39 +29,20 @@ final class Router
             $this->redirect($normalized);
         }
         $segments = $this->segments($normalized);
-        $render = new RenderService();
         if ($segments === []) {
-            $section = $this->defaultSection();
-            if ($section === null) {
-                $this->notFound();
-            }
-            $chain = $this->chainForSection($section);
-            $canonical = $this->urls->sectionUrl($chain);
-            if ($normalized !== $canonical) {
-                $this->redirect($canonical);
-            }
-            $render->renderSectionListing($section, $chain);
+            $this->handleRoot($normalized);
             return;
         }
         $chain = $this->sections->resolveChain($segments);
         if ($chain !== []) {
-            $canonical = $this->urls->sectionUrl($chain);
-            if ($normalized !== $canonical) {
-                $this->redirect($canonical);
-            }
-            $render->renderSectionListing(end($chain), $chain);
+            $this->handleListing($normalized, $chain);
             return;
         }
         $detail = $this->resolveItem($segments);
         if ($detail === null) {
             $this->notFound();
         }
-        $itemSlug = $detail['item']['slug'] ?: null;
-        $canonical = $this->urls->itemUrl($detail['chain'], $detail['infoblock']['slug'], $itemSlug, (int) $detail['item']['id']);
-        if ($normalized !== $canonical) {
-            $this->redirect($canonical);
-        }
-        $render->renderItemDetail($detail['section'], $detail['chain'], $detail['infoblock'], $detail['item']);
+        $this->handleDetail($normalized, $detail);
     }
 
     private function resolveItem(array $segments): ?array
@@ -142,6 +123,39 @@ final class Router
             break;
         }
         return $chain;
+    }
+
+    private function handleRoot(string $normalized): void
+    {
+        $section = $this->defaultSection();
+        if ($section === null) {
+            $this->notFound();
+        }
+        $chain = $this->chainForSection($section);
+        $canonical = $this->urls->sectionUrl($chain);
+        if ($normalized !== $canonical) {
+            $this->redirect($canonical);
+        }
+        (new RenderService())->renderSectionListing($section, $chain);
+    }
+
+    private function handleListing(string $normalized, array $chain): void
+    {
+        $canonical = $this->urls->sectionUrl($chain);
+        if ($normalized !== $canonical) {
+            $this->redirect($canonical);
+        }
+        (new RenderService())->renderSectionListing(end($chain), $chain);
+    }
+
+    private function handleDetail(string $normalized, array $detail): void
+    {
+        $itemSlug = $detail['item']['slug'] ?: null;
+        $canonical = $this->urls->itemUrl($detail['chain'], $detail['infoblock']['slug'], $itemSlug, (int) $detail['item']['id']);
+        if ($normalized !== $canonical) {
+            $this->redirect($canonical);
+        }
+        (new RenderService())->renderItemDetail($detail['section'], $detail['chain'], $detail['infoblock'], $detail['item']);
     }
 
     private function redirect(string $path): void

@@ -60,7 +60,12 @@ $user = Auth::user();
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h6 id="panel-title">Инфоблоки</h6>
-                            <div>
+                            <div class="d-flex gap-2">
+                                <div class="btn-group" id="entity-switch">
+                                    <button class="btn btn-primary" data-entity="infoblocks">Инфоблоки</button>
+                                    <button class="btn btn-outline-primary" data-entity="sections">Разделы</button>
+                                    <button class="btn btn-outline-primary" data-entity="items" disabled>Элементы</button>
+                                </div>
                                 <button class="btn btn-primary" id="create-button">Создать</button>
                             </div>
                         </div>
@@ -92,6 +97,7 @@ $user = Auth::user();
                             <input type="hidden" name="id">
                             <input type="hidden" name="section_id">
                             <input type="hidden" name="infoblock_id">
+                            <input type="hidden" name="parent_id">
                             <div class="mb-3">
                                 <label class="form-label">Название</label>
                                 <input class="form-control" name="title" required>
@@ -126,6 +132,10 @@ $user = Auth::user();
 <script src="<?= Config::baseUrl('/admin/vendor/sow/sow.core.min.js') ?>"></script>
 <script src="<?= Config::baseUrl('/admin/vendor/codemirror/codemirror.js') ?>"></script>
 <script src="<?= Config::baseUrl('/admin/vendor/tinymce/tinymce.min.js') ?>"></script>
+<script src="<?= Config::baseUrl('/admin/assets/helpers.js') ?>"></script>
+<script src="<?= Config::baseUrl('/admin/assets/api.js') ?>"></script>
+<script src="<?= Config::baseUrl('/admin/assets/app-ui.js') ?>"></script>
+<script src="<?= Config::baseUrl('/admin/assets/app-core.js') ?>"></script>
 <script src="<?= Config::baseUrl('/admin/assets/app.js') ?>"></script>
 </body>
 </html>
