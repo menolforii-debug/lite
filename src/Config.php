@@ -14,9 +14,6 @@ final class Config
     {
         if (self::BASE_URL === '') {
             $base = dirname($_SERVER['SCRIPT_NAME'] ?? '');
-            if (str_ends_with($base, '/admin')) {
-                $base = substr($base, 0, -6);
-            }
             $_SERVER['BASE_URL'] = $base === '/' ? '' : $base;
             return;
         }
