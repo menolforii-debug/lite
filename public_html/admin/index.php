@@ -18,8 +18,8 @@ $user = Auth::user();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LiteCMS Admin</title>
-    <link rel="stylesheet" href="<?= Config::baseUrl('/admin/vendor/sow/sow.vendor.min.css') ?>">
-    <link rel="stylesheet" href="<?= Config::baseUrl('/admin/vendor/sow/sow.core.min.css') ?>">
+    <link rel="stylesheet" href="<?= Config::baseUrl('/vendor/sow/sow.vendor.min.css') ?>">
+    <link rel="stylesheet" href="<?= Config::baseUrl('/vendor/sow/sow.core.min.css') ?>">
     <link rel="stylesheet" href="<?= Config::baseUrl('/admin/vendor/codemirror/codemirror.css') ?>">
 </head>
 <body>
@@ -128,8 +128,8 @@ $user = Auth::user();
     <?php endif; ?>
 </div>
 
-<script src="<?= Config::baseUrl('/admin/vendor/sow/sow.vendor.min.js') ?>"></script>
-<script src="<?= Config::baseUrl('/admin/vendor/sow/sow.core.min.js') ?>"></script>
+<script src="<?= Config::baseUrl('/vendor/sow/sow.vendor.min.js') ?>"></script>
+<script src="<?= Config::baseUrl('/vendor/sow/sow.core.min.js') ?>"></script>
 <script src="<?= Config::baseUrl('/admin/vendor/codemirror/codemirror.js') ?>"></script>
 <script src="<?= Config::baseUrl('/admin/vendor/tinymce/tinymce.min.js') ?>"></script>
 <script src="<?= Config::baseUrl('/admin/assets/helpers.js') ?>"></script>
